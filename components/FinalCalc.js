@@ -65,7 +65,7 @@ export function FinalCalc ({navigation}) {
         <Button title="Go back" onPress={() => navigation.goBack()} />
 
         <Button
-          title="Go back to the Home screen"
+          title="Back to home screen"
           onPress={() => navigation.popToTop()}
         />
       </View>
