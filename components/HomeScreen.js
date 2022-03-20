@@ -9,14 +9,14 @@ import { NavigationContainer } from '@react-navigation/native';
 export function HomeScreen ({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.centerText}>To begin your covid assesment click here</Text>
+      <Text style={styles.centerText}>Begin COVID-19 Assessment </Text>
       <StatusBar style="auto" />
 
       <Button
         title="Go to eval screen"
         onPress={() => navigation.navigate('EvalScreenOne')}
         style={{ backgroundColor: 'green' }}>
-        <Text style={{ fontSize: 30, color: 'white' }}>Click here to conitinue</Text>
+        <Text style={{ fontSize: 30, color: 'white' }}>Continue</Text>
       </Button>
     </View>
   )
