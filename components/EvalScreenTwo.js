@@ -11,7 +11,7 @@ export function EvalScreenTwo ({navigation}){
   const myContext = useContext(AppContext);
   return (
   <View style={styles.container}>
-      <Text>Select number of people in attendance:</Text>
+      <Text>People In Attendance:</Text>
       <Picker
         selectedValue={myContext.userNumOfPeople}
         onValueChange={myContext.setNumOfPeople}
