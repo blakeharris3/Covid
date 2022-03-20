@@ -25,7 +25,7 @@ export function EvalScreenThree ({navigation}) {
       <StatusBar style="auto" />
       <TextInput style={styles.textField}
       onChangeText={myContext.setStateName}
-      placeholder="Enter state name:"
+      placeholder="Enter State:"
       value={myContext.userStateName}
       />
       <Button
