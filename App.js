@@ -1,52 +1,58 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import AppContext from "./components/AppContext";
+import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HomeScreen } from "./components/HomeScreen";
+import { EvalScreenOne } from "./components/EvalScreenOne";
+import { EvalScreenTwo } from "./components/EvalScreenTwo";
+import { FinalCalc } from "./components/FinalCalc";
+import { EvalScreenThree } from "./components/EvalScreenThree";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [condition, setCondition] = useState('Unknown');
   const [age, setAge] = useState('Unknown');
+  const [numOfPeople, setNumOfPeople] = useState('Unknown');
+  const [destinatoinSize, setDestinationSize] = useState('Unknown');
+  const [stateName, setStateName] = useState('');
+  const [cases, setCases] = useState(0);
+  const [deaths, setDeaths] = useState(0);
+
+  const userValues = {
+    userCondition: condition,
+    userAge: age,
+    userNumOfPeople: numOfPeople,
+    userDestinationSize: destinatoinSize,
+    userStateName: stateName,
+    userCases: cases,
+    userDeaths: deaths,
+    setCondition,
+    setAge,
+    setNumOfPeople,
+    setDestinationSize,
+    setStateName,
+    setCases,
+    setDeaths,
+  };
   return (
-    
-    <View style={styles.container}>
-      <Text>Select Age Range:</Text>
-      <Picker
-        selectedValue={age}
-        onValueChange={(value, index) => setAge(value)}
-        style={styles.picker}
-      >
-        <Picker.Item label="Age Range" value=" " />
-        <Picker.Item label="<14" value="<14" />
-        <Picker.Item label="15-25" value="15-25" />
-        <Picker.Item label="26-40" value="26-40" />
-        <Picker.Item label="40-55" value="40-55" />
-        <Picker.Item label="56+" value="56+" />
-      </Picker>
-      <Text></Text>
-      <Text></Text>
-      <Text></Text>
-      <Text>Pre Existing Condition:</Text>
-      <Picker
-        selectedValue={condition}
-        onValueChange={(value, index) => setCondition(value)}
-        style={styles.picker}
-      >
-        <Picker.Item label="Select Condition" value=" " />
-        <Picker.Item label="None" value=" " />
-        <Picker.Item label="Diabetes" value="Diabetes" />
-        <Picker.Item label="Asthma" value="Asthma" />
-        <Picker.Item label="High Blood Pressure" value="Pressure" />
-        <Picker.Item label="Heart Disease" value="Heart" />
-        <Picker.Item label="Lung Disease" value="Lung" />
-      </Picker>
-      <StatusBar style="auto" />
-      <Button
-        title="Next"
-      />
-    </View>
+    <AppContext.Provider value={userValues}>
+    <NavigationContainer>
+       <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="EvalScreenOne" component={EvalScreenOne} />
+        <Stack.Screen name="EvalScreenTwo" component={EvalScreenTwo} />
+        <Stack.Screen name="EvalScreenThree" component={EvalScreenThree} />
+        <Stack.Screen name="FinalCalc" component={FinalCalc} />
+      </Stack.Navigator>
+
+    </NavigationContainer>
+    </AppContext.Provider>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -61,6 +67,11 @@ const styles = StyleSheet.create({
     padding: 5,
     borderWidth: 1,
     borderColor: "black",
+  },
+  centerText:{
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize:30,
   },
 });
 
