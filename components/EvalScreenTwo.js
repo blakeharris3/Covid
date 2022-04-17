@@ -27,13 +27,13 @@ export function EvalScreenTwo ({navigation}){
       <Text></Text>
       <Text></Text>
       <Text></Text>
-      <Text> Destination Size:</Text>
+      <Text> Destination:</Text>
       <Picker
         selectedValue={myContext.userDestinationSize}
         onValueChange={myContext.setDestinationSize}
         style={styles.picker}
       >
-        <Picker.Item label="Select Destination Size" value=" " />
+        <Picker.Item label="Select Destination" value=" " />
         <Picker.Item label="Home" value="extra small" />
         <Picker.Item label="Small establishment" value="small" />
         <Picker.Item label="Resturant" value="medium" />
